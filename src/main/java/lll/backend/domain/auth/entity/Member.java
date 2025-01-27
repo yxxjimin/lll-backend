@@ -1,14 +1,14 @@
 package lll.backend.domain.auth.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Table(name = "member")
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
+@Builder
 public class Member {
 
     @Id
