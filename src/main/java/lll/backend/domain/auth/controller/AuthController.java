@@ -5,10 +5,8 @@ import lll.backend.domain.auth.dto.request.SignupRequest;
 import lll.backend.domain.auth.dto.response.LoginResponse;
 import lll.backend.domain.auth.service.AuthService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/auth")
@@ -25,5 +23,11 @@ public class AuthController {
     @PostMapping("/login")
     public LoginResponse login(@RequestBody final LoginRequest request) {
         return authService.login(request);
+    }
+
+    @GetMapping("/me")
+    public String me() {
+        String userId = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return userId;
     }
 }

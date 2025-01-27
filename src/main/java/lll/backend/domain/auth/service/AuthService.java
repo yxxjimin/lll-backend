@@ -1,5 +1,6 @@
 package lll.backend.domain.auth.service;
 
+import lll.backend.config.security.auth.JwtTokenProvider;
 import lll.backend.domain.auth.dto.request.LoginRequest;
 import lll.backend.domain.auth.dto.request.SignupRequest;
 import lll.backend.domain.auth.dto.response.LoginResponse;
@@ -15,6 +16,7 @@ public class AuthService {
 
     private final MemberRepository memberRepository;
     private final PasswordEncoder passwordEncoder;
+    private final JwtTokenProvider jwtTokenProvider;
 
     public LoginResponse signup(final SignupRequest request) {
         String encodedPassword = passwordEncoder.encode(request.password());
@@ -24,9 +26,11 @@ public class AuthService {
                 .build();
         memberRepository.save(member);
 
+        String accessToken = jwtTokenProvider.createToken(member.getId().toString(), null);
+
         return new LoginResponse(
                 member.getUsername(),
-                "fake-signup-token"
+                accessToken
         );
     }
 
@@ -35,9 +39,13 @@ public class AuthService {
         if (!passwordEncoder.matches(request.password(), member.getPassword())) {
             throw new RuntimeException("비밀번호 불일치");
         }
+
+        String accessToken = jwtTokenProvider.createToken(member.getId().toString(), null);
+
         return new LoginResponse(
                 member.getUsername(),
-                "fake-login-token"
+                accessToken
         );
     }
+
 }

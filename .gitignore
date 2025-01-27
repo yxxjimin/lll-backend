@@ -27,3 +27,6 @@ out/
 
 # Local database
 /db
+
+# Env
+envs/
