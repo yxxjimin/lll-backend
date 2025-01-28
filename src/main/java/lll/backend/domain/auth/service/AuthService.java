@@ -1,6 +1,6 @@
 package lll.backend.domain.auth.service;
 
-import lll.backend.config.security.auth.JwtTokenProvider;
+import lll.backend.config.security.util.JwtTokenProvider;
 import lll.backend.domain.auth.dto.request.LoginRequest;
 import lll.backend.domain.auth.dto.request.SignupRequest;
 import lll.backend.domain.auth.dto.response.LoginResponse;

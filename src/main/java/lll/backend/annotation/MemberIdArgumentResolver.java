@@ -1,6 +1,6 @@
 package lll.backend.annotation;
 
-import lll.backend.config.security.auth.CustomUserDetails;
+import lll.backend.config.security.util.CustomUserDetails;
 import org.springframework.core.MethodParameter;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.support.WebDataBinderFactory;
