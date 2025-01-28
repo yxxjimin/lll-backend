@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -32,12 +31,12 @@ public class JwtTokenProvider {
         Date iat = new Date();
         Date exp = new Date(iat.getTime() + tokenValidityInSeconds);
 
-        List<String> roles = new ArrayList<>();
-        roles.add("user");
+//        List<String> roles = new ArrayList<>();
+//        roles.add("USER");
 
         return Jwts.builder()
                 .setSubject(subject)
-                .claim("roles", roles)
+//                .claim("roles", roles)
                 .setIssuedAt(iat)
                 .setExpiration(exp)
                 .signWith(secretKey)
