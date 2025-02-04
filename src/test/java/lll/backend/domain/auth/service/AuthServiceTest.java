@@ -3,7 +3,6 @@ package lll.backend.domain.auth.service;
 import lll.backend.domain.auth.dto.request.LoginRequest;
 import lll.backend.domain.auth.dto.request.SignupRequest;
 import lll.backend.domain.auth.dto.response.LoginResponse;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -30,3 +30,6 @@ out/
 
 # Env
 envs/
+
+# Test env
+src/test/resources/application.yml
