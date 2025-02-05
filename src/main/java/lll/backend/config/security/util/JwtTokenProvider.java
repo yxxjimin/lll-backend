@@ -29,7 +29,7 @@ public class JwtTokenProvider {
 
     public String createToken(String subject, List<? extends GrantedAuthority> authorities) {
         Date iat = new Date();
-        Date exp = new Date(iat.getTime() + tokenValidityInSeconds);
+        Date exp = new Date(iat.getTime() + tokenValidityInSeconds * 1000);
 
 //        List<String> roles = new ArrayList<>();
 //        roles.add("USER");
