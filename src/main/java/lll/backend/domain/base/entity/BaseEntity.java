@@ -1,6 +1,7 @@
 package lll.backend.domain.base.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lll.backend.domain.auth.entity.Member;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,6 +30,7 @@ public class BaseEntity {
     @LastModifiedDate
     protected LocalDateTime modifiedAt;
 
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "member_id", referencedColumnName = "id")
     protected Member member;
