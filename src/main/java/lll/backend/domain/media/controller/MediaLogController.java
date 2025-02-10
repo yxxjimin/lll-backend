@@ -1,5 +1,7 @@
 package lll.backend.domain.media.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lll.backend.annotation.MemberId;
 import lll.backend.domain.media.dto.request.CreateMediaLogRequest;
 import lll.backend.domain.media.dto.request.UpdateMediaLogRequest;
@@ -17,11 +19,13 @@ import java.util.List;
 @RestController
 @RequestMapping("/log/media")
 @RequiredArgsConstructor
+@Tag(name = "Media Logging API")
 public class MediaLogController {
 
     private final MediaLogService mediaLogService;
 
     @PostMapping
+    @Operation(summary = "새 미디어 로그 생성")
     public ResponseEntity<Void> createMediaLog(
             @MemberId final Long memberId,
             @RequestBody final CreateMediaLogRequest request
@@ -37,6 +41,7 @@ public class MediaLogController {
     }
 
     @GetMapping
+    @Operation(summary = "사용자의 전체 미디어 로그 목록 조회")
     public ResponseEntity<List<MediaLogResponse>> getMediaLogList(
             @MemberId final Long memberId
     ) {
@@ -45,6 +50,7 @@ public class MediaLogController {
     }
 
     @GetMapping("/{id}")
+    @Operation(summary = "특정 미디어 로그 조회")
     public ResponseEntity<MediaLogResponse> getMediaLog(
             @PathVariable final Long id
     ) {
@@ -53,6 +59,7 @@ public class MediaLogController {
     }
 
     @PutMapping("/{id}")
+    @Operation(summary = "미디어 로그 수정")
     public ResponseEntity<Void> updateMediaLog(
             @PathVariable final Long id,
             @RequestBody final UpdateMediaLogRequest request
@@ -62,6 +69,7 @@ public class MediaLogController {
     }
 
     @DeleteMapping("/{id}")
+    @Operation(summary = "미디어 로그 삭제")
     public ResponseEntity<Void> deleteMediaLog(
             @PathVariable final Long id
     ) {
