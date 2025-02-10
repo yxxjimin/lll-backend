@@ -52,9 +52,10 @@ public class MediaLogController {
     @GetMapping("/{id}")
     @Operation(summary = "특정 미디어 로그 조회")
     public ResponseEntity<MediaLogResponse> getMediaLog(
-            @PathVariable final Long id
+            @PathVariable final Long id,
+            @MemberId final Long memberId
     ) {
-        MediaLogResponse mediaLog = mediaLogService.getMediaLog(id);
+        MediaLogResponse mediaLog = mediaLogService.getMediaLog(id, memberId);
         return ResponseEntity.ok(mediaLog);
     }
 
@@ -62,18 +63,20 @@ public class MediaLogController {
     @Operation(summary = "미디어 로그 수정")
     public ResponseEntity<Void> updateMediaLog(
             @PathVariable final Long id,
+            @MemberId final Long memberId,
             @RequestBody final UpdateMediaLogRequest request
     ) {
-        mediaLogService.updateMediaLog(id, request);
+        mediaLogService.updateMediaLog(id, memberId, request);
         return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("/{id}")
     @Operation(summary = "미디어 로그 삭제")
     public ResponseEntity<Void> deleteMediaLog(
-            @PathVariable final Long id
+            @PathVariable final Long id,
+            @MemberId final Long memberId
     ) {
-        mediaLogService.deleteMediaLog(id);
+        mediaLogService.deleteMediaLog(id, memberId);
         return ResponseEntity.ok().build();
     }
 }

@@ -3,24 +3,27 @@ package lll.backend.domain.media.service;
 import lll.backend.common.util.UpdateUtils;
 import lll.backend.domain.auth.entity.Member;
 import lll.backend.domain.auth.repository.MemberRepository;
+import lll.backend.domain.base.service.AbstractBaseEntityService;
 import lll.backend.domain.media.dto.request.CreateMediaLogRequest;
 import lll.backend.domain.media.dto.request.UpdateMediaLogRequest;
 import lll.backend.domain.media.dto.response.MediaLogResponse;
 import lll.backend.domain.media.entity.MediaLog;
 import lll.backend.domain.media.entity.MediaType;
 import lll.backend.domain.media.repository.MediaLogRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
-public class MediaLogService {
+public class MediaLogService extends AbstractBaseEntityService<MediaLog, MediaLogRepository> {
 
-    private final MediaLogRepository mediaLogRepository;
     private final MemberRepository memberRepository;
+
+    public MediaLogService(MediaLogRepository repository, MemberRepository memberRepository) {
+        super(repository);
+        this.memberRepository = memberRepository;
+    }
 
     @Transactional
     public MediaLog createMediaLog(final Long memberId, final CreateMediaLogRequest request) {
@@ -33,34 +36,34 @@ public class MediaLogService {
                 .comment(request.comment())
                 .mediaType(MediaType.valueOf(request.mediaType()))
                 .build();
-        mediaLogRepository.save(mediaLog);
+        repository.save(mediaLog);
         return mediaLog;
     }
 
     @Transactional(readOnly = true)
     public List<MediaLogResponse> getMediaLogList(final Long memberId) {
-        return mediaLogRepository.findAllByMemberId(memberId)
+        return repository.findAllByMemberId(memberId)
                 .stream()
                 .map(MediaLogResponse::of)
                 .toList();
     }
 
     @Transactional(readOnly = true)
-    public MediaLogResponse getMediaLog(final Long id) {
-        MediaLog mediaLog = mediaLogRepository.findById(id).orElseThrow();
+    public MediaLogResponse getMediaLog(final Long id, final Long memberId) {
+        MediaLog mediaLog = getById(id, memberId);
         return MediaLogResponse.of(mediaLog);
     }
 
     @Transactional
-    public void updateMediaLog(final Long id, final UpdateMediaLogRequest request) {
-        MediaLog mediaLog = mediaLogRepository.findById(id).orElseThrow();
+    public void updateMediaLog(final Long id, final Long memberId, final UpdateMediaLogRequest request) {
+        MediaLog mediaLog = getById(id, memberId);
         UpdateUtils.copyNonNullProperties(request, mediaLog);
-        mediaLogRepository.save(mediaLog);
+        repository.save(mediaLog);
     }
 
     @Transactional
-    public void deleteMediaLog(final Long id) {
-        MediaLog mediaLog = mediaLogRepository.findById(id).orElseThrow();
-        mediaLogRepository.delete(mediaLog);
+    public void deleteMediaLog(final Long id, final Long memberId) {
+        MediaLog mediaLog = getById(id, memberId);
+        repository.delete(mediaLog);
     }
 }
