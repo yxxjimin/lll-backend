@@ -2,6 +2,7 @@ package lll.backend.domain.media.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import lll.backend.annotation.MemberId;
 import lll.backend.domain.media.dto.request.CreateMediaLogRequest;
 import lll.backend.domain.media.dto.request.UpdateMediaLogRequest;
@@ -28,7 +29,7 @@ public class MediaLogController {
     @Operation(summary = "새 미디어 로그 생성")
     public ResponseEntity<Void> createMediaLog(
             @MemberId final Long memberId,
-            @RequestBody final CreateMediaLogRequest request
+            @RequestBody @Valid final CreateMediaLogRequest request
     ) {
         MediaLog mediaLog = mediaLogService.createMediaLog(memberId, request);
 

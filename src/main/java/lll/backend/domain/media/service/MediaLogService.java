@@ -10,6 +10,7 @@ import lll.backend.domain.media.dto.response.MediaLogResponse;
 import lll.backend.domain.media.entity.MediaLog;
 import lll.backend.domain.media.entity.MediaType;
 import lll.backend.domain.media.repository.MediaLogRepository;
+import lll.backend.domain.mood.entity.MoodType;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -34,6 +35,7 @@ public class MediaLogService extends AbstractBaseEntityService<MediaLog, MediaLo
                 .author(request.author())
                 .year(request.year())
                 .comment(request.comment())
+                .moodType(MoodType.valueOf(request.moodType()))
                 .mediaType(MediaType.valueOf(request.mediaType()))
                 .build();
         repository.save(mediaLog);

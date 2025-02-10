@@ -4,6 +4,7 @@ public record UpdateMediaLogRequest(
         String title,
         String author,
         Integer year,
-        String comment
+        String comment,
+        String moodType
 ) {
 }

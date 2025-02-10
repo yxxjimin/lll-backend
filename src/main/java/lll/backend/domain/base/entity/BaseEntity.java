@@ -3,6 +3,7 @@ package lll.backend.domain.base.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lll.backend.domain.auth.entity.Member;
+import lll.backend.domain.mood.entity.MoodType;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
@@ -34,4 +35,7 @@ public class BaseEntity {
     @ManyToOne
     @JoinColumn(name = "member_id", referencedColumnName = "id")
     protected Member member;
+
+    @Enumerated(EnumType.STRING)
+    protected MoodType moodType;
 }
