@@ -1,4 +1,4 @@
-package lll.backend.config.security.util;
+package lll.backend.common.security.util;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

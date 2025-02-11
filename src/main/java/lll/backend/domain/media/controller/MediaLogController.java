@@ -3,7 +3,7 @@ package lll.backend.domain.media.controller;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
-import lll.backend.annotation.MemberId;
+import lll.backend.common.annotation.MemberId;
 import lll.backend.domain.media.dto.request.CreateMediaLogRequest;
 import lll.backend.domain.media.dto.request.UpdateMediaLogRequest;
 import lll.backend.domain.media.dto.response.MediaLogResponse;

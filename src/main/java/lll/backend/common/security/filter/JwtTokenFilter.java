@@ -1,12 +1,12 @@
-package lll.backend.config.security.filter;
+package lll.backend.common.security.filter;
 
 import io.jsonwebtoken.Claims;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import lll.backend.config.security.util.CustomUserDetails;
-import lll.backend.config.security.util.JwtTokenProvider;
+import lll.backend.common.security.util.CustomUserDetails;
+import lll.backend.common.security.util.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;

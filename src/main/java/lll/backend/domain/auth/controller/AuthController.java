@@ -2,7 +2,7 @@ package lll.backend.domain.auth.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import lll.backend.annotation.MemberId;
+import lll.backend.common.annotation.MemberId;
 import lll.backend.domain.auth.dto.request.LoginRequest;
 import lll.backend.domain.auth.dto.request.SignupRequest;
 import lll.backend.domain.auth.dto.response.LoginResponse;

@@ -1,7 +1,7 @@
-package lll.backend.config.security;
+package lll.backend.common.config;
 
-import lll.backend.config.security.filter.JwtTokenFilter;
-import lll.backend.config.security.filter.LoggerFilter;
+import lll.backend.common.security.filter.JwtTokenFilter;
+import lll.backend.common.security.filter.LoggerFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

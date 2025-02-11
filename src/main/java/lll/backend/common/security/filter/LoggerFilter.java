@@ -1,4 +1,4 @@
-package lll.backend.config.security.filter;
+package lll.backend.common.security.filter;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

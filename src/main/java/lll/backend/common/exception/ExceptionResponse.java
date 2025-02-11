@@ -1,6 +1,6 @@
 package lll.backend.common.exception;
 
-public record ExceptionDetails(
+public record ExceptionResponse(
         String message
 ) {
 }

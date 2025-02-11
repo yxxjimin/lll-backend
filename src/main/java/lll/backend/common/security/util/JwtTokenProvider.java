@@ -1,4 +1,4 @@
-package lll.backend.config.security.util;
+package lll.backend.common.security.util;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;

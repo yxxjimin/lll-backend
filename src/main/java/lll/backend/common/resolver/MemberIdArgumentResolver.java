@@ -1,6 +1,7 @@
-package lll.backend.annotation;
+package lll.backend.common.resolver;
 
-import lll.backend.config.security.util.CustomUserDetails;
+import lll.backend.common.annotation.MemberId;
+import lll.backend.common.security.util.CustomUserDetails;
 import org.springframework.core.MethodParameter;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.support.WebDataBinderFactory;

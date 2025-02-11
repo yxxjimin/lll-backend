@@ -1,7 +1,5 @@
-package lll.backend.common.handler;
+package lll.backend.common.exception;
 
-import lll.backend.common.exception.ExceptionDetails;
-import lll.backend.common.exception.NotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,21 +8,21 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
 @Slf4j
-public class ExceptionHandlers {
+public class GlobalExceptionHandler {
 
     @ExceptionHandler
-    public ResponseEntity<ExceptionDetails> handleException(Exception e) {
+    public ResponseEntity<ExceptionResponse> handleException(Exception e) {
         log.error("[INTERNAL ERROR]: {}", e.getMessage());
         return ResponseEntity
                 .status(HttpStatus.INTERNAL_SERVER_ERROR)
-                .body(new ExceptionDetails(e.getMessage()));
+                .body(new ExceptionResponse(e.getMessage()));
     }
 
     @ExceptionHandler
-    public ResponseEntity<ExceptionDetails> handleNotFoundException(NotFoundException e) {
+    public ResponseEntity<ExceptionResponse> handleNotFoundException(NotFoundException e) {
         log.error("[NOT FOUND ERROR]: {}", e.getMessage());
         return ResponseEntity
                 .status(HttpStatus.NOT_FOUND)
-                .body(new ExceptionDetails(e.getMessage()));
+                .body(new ExceptionResponse(e.getMessage()));
     }
 }
