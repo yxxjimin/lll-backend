@@ -3,12 +3,10 @@ package lll.backend.domain.base.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lll.backend.domain.auth.entity.Member;
-import lll.backend.domain.mood.entity.MoodType;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
@@ -18,7 +16,7 @@ import java.time.LocalDateTime;
 @SuperBuilder
 @NoArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
-public class BaseEntity {
+public class BaseUserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,14 +26,8 @@ public class BaseEntity {
     @Column(updatable = false)
     protected LocalDateTime createdAt;
 
-    @LastModifiedDate
-    protected LocalDateTime modifiedAt;
-
     @NotNull
     @ManyToOne
     @JoinColumn(name = "member_id", referencedColumnName = "id")
     protected Member member;
-
-    @Enumerated(EnumType.STRING)
-    protected MoodType moodType;
 }

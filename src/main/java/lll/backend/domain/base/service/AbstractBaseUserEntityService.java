@@ -1,14 +1,14 @@
 package lll.backend.domain.base.service;
 
 import lll.backend.common.exception.NotFoundException;
-import lll.backend.domain.base.entity.BaseEntity;
-import lll.backend.domain.base.repository.BaseEntityRepository;
+import lll.backend.domain.base.entity.BaseUserEntity;
+import lll.backend.domain.base.repository.BaseUserEntityRepository;
 import lombok.RequiredArgsConstructor;
 
 import java.util.Objects;
 
 @RequiredArgsConstructor
-public abstract class AbstractBaseEntityService<T extends BaseEntity, R extends BaseEntityRepository<T>> {
+public abstract class AbstractBaseUserEntityService<T extends BaseUserEntity, R extends BaseUserEntityRepository<T>> {
 
     protected final R repository;
 
