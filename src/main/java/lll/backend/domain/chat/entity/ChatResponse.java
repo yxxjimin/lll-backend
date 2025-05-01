@@ -11,10 +11,10 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import java.time.LocalDateTime;
 
 @Entity
-@EntityListeners(AuditingEntityListener.class)
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@EntityListeners(AuditingEntityListener.class)
 public class ChatResponse {
 
     @Id
@@ -23,7 +23,7 @@ public class ChatResponse {
 
     @CreatedDate
     @Column(updatable = false)
-    protected LocalDateTime createdAt;
+    private LocalDateTime createdAt;
 
     private String content;
 
