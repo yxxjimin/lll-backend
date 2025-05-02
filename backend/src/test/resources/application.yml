@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/lll
+    username: root
+    password: root
+jwt:
+  secret: b7b7c1a3a28221467f74e1254fe7792fdc6e441dc93c7d652ba1e961bd8f5a6f
+  token-validity-in-seconds: 86400
